@@ -44,9 +44,8 @@ public class EjerciciosNivel01 {
         frase = frase.replace('í', 'i');
         frase = frase.replace('ó', 'o');
         frase = frase.replace('ú', 'u');
-        //quito también los espacios en blanco y las comas.
+        //quito también los espacios en blanco.
         frase = frase.replace(" ","");
-        frase = frase.replace(",", "");
         
         return frase;
     }
@@ -67,6 +66,43 @@ public class EjerciciosNivel01 {
         else return false;
     }
     
+    /**
+     * Tercer ejercicio : ISOGRAMA
+     * @param palabra que metemos para comprobar si es un isograma.
+     * @return 
+     */
+    
+    public boolean esIsograma(String palabra){
+        palabra = limpiaFrase(palabra); //quita acentos y espacios en blanco.
+        for(int i=0; i < palabra.length()-1; i++){ //el -1 quita mirar la ultima
+            for(int j=i+1; j < palabra.length(); j++){
+                if(palabra.charAt(i) == palabra.charAt(j)){
+                    return false;
+                }
+            }    
+        }
+        return true;
+    }
+    
+    /**
+     *Cuarto Ejercicio : ACRÓNIMO
+     * @param frase que metemos para que saque su acrónimo.
+     * @return 
+     */
+    
+    public String acronimo(String frase){
+        //suponemos que hay una letra en la frase.
+        frase = frase.toUpperCase();
+        String[] palabras = frase.split(" ");
+        String resultado = "";
+        for(int i=0; i < palabras.length; i++){  
+            if (!(palabras[i].equals("Y") || palabras[i].equals("E") || palabras[i].equals("DE") || palabras[i].equals("LA") || palabras[i].equals("LAS"))){
+                resultado = resultado + palabras[i].charAt(0);
+            } 
+        }
+        return resultado;  
+    }
+    
     public static void main(String[] args) {
         //test primer ejercicio.
         int[] numeros = {99,37,7,54,13};
@@ -77,7 +113,15 @@ public class EjerciciosNivel01 {
         System.out.println(Arrays.toString(e.maximos(numeros2)));
         System.out.println(Arrays.toString(e.maximos(numeros3)));
         //test segundo ejercicio.
-        System.out.println(e.esPalindromo("Acaso hubo buhos acá"));
+        System.out.println(e.esPalindromo("Acaso hubo buhos acá")); //true
+        //test tercer ejercicio.
+        System.out.println(e.esIsograma("Tijera")); //true
+        System.out.println(e.esIsograma("Pájaro")); //false
+        System.out.println(e.esIsograma("Golondrina")); //false
+        //test cuarto ejercicio.
+        System.out.println("Acronimo (Alta Velicidad Española): " + e.acronimo("Alta Velocidad Española"));
+        System.out.println("Acronimo (TIC): " + e.acronimo("Tecnologías de la Información y de la Comunicación"));
+        
     }
     
 }
