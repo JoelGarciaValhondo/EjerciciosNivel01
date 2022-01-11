@@ -103,6 +103,24 @@ public class EjerciciosNivel01 {
         return resultado;  
     }
     
+    public boolean esAnagrama (String palabra1, String palabra2){
+        palabra1 = limpiaFrase(palabra1);
+        palabra2 = limpiaFrase(palabra2);
+        palabra1 = palabra1.toUpperCase();
+        palabra2 = palabra2.toUpperCase();
+        if(palabra1.length() != palabra2.length()){
+           return false; 
+        }
+        else if(palabra1.length() == palabra2.length()){
+            for(int i=0; i < palabra2.length(); i++){
+                for(int j=0; j < palabra2.length(); j++){
+                    
+                }
+            }
+        }
+        return true;
+    }
+    
     public static void main(String[] args) {
         //test primer ejercicio.
         int[] numeros = {99,37,7,54,13};
