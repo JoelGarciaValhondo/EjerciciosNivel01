@@ -85,7 +85,7 @@ public class EjerciciosNivel01 {
     }
     
     /**
-     *Cuarto Ejercicio : ACRÓNIMO
+     * Cuarto Ejercicio : ACRÓNIMO
      * @param frase que metemos para que saque su acrónimo.
      * @return 
      */
@@ -103,23 +103,43 @@ public class EjerciciosNivel01 {
         return resultado;  
     }
     
+    /**
+     * Quinto Ejercicio: ANAGRAMA
+     * @param palabra1, primera palabra que comparamos.
+     * @param palabra2, segunda palabra que comparamos.
+     * @return 
+     */
+    
     public boolean esAnagrama (String palabra1, String palabra2){
-        palabra1 = limpiaFrase(palabra1);
-        palabra2 = limpiaFrase(palabra2);
-        palabra1 = palabra1.toUpperCase();
-        palabra2 = palabra2.toUpperCase();
+        palabra1 = limpiaFrase(palabra1); //limpia palabra1
+        palabra2 = limpiaFrase(palabra2); //limpia palabra2
+        palabra1 = palabra1.toUpperCase(); //pasa palabra1 a mayúsculas
+        palabra2 = palabra2.toUpperCase(); //pasa palabra2 a mayúsculas
+        //tercera palabra que utilizo para ir copiando la segunda palabra para compararla con la primera después.
+        //se podría ir borrando las palabras también, pero se haría de otra forma.
+        String palabra3 = "";
+        //si su longitud no es igusl, no puede ser anagrama.
         if(palabra1.length() != palabra2.length()){
            return false; 
         }
         else if(palabra1.length() == palabra2.length()){
-            for(int i=0; i < palabra2.length(); i++){
+            for(int i=0; i < palabra1.length(); i++){
                 for(int j=0; j < palabra2.length(); j++){
-                    
+                    if(palabra1.charAt(i) == palabra2.charAt(j)){
+                        palabra3 = palabra3 + palabra1.charAt(i);                     
+                    }          
                 }
             }
+            //Si la primera palabra es igual a la tercera palabra que hemos ido
+            //copiando cada vez que una letra era igual que otra de la otra
+            //palabra, devuelve true ya que son iguales.
+            if(palabra1.equals(palabra3)){
+              return true;  
+            } 
         }
-        return true;
+        return false;
     }
+    
     
     public static void main(String[] args) {
         //test primer ejercicio.
@@ -139,7 +159,11 @@ public class EjerciciosNivel01 {
         //test cuarto ejercicio.
         System.out.println("Acronimo (Alta Velicidad Española): " + e.acronimo("Alta Velocidad Española"));
         System.out.println("Acronimo (TIC): " + e.acronimo("Tecnologías de la Información y de la Comunicación"));
-        
+        //test quinto ejercicio.
+        System.out.println(e.esAnagrama("Tajo", "Jota")); //true
+        System.out.println(e.esAnagrama("Tajo", "José")); //false
+        System.out.println(e.esAnagrama("Riesgo", "Sergio")); //true
+        System.out.println(e.esAnagrama("Riesgo", "Ordena")); //false
     }
     
 }
