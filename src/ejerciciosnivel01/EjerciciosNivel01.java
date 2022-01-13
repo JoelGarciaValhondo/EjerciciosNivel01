@@ -115,9 +115,6 @@ public class EjerciciosNivel01 {
         palabra2 = limpiaFrase(palabra2); //limpia palabra2
         palabra1 = palabra1.toUpperCase(); //pasa palabra1 a mayúsculas
         palabra2 = palabra2.toUpperCase(); //pasa palabra2 a mayúsculas
-        //tercera palabra que utilizo para ir copiando la segunda palabra para compararla con la primera después.
-        //se podría ir borrando las palabras también, pero se haría de otra forma.
-        String palabra3 = "";
         //si su longitud no es igusl, no puede ser anagrama.
         if(palabra1.length() != palabra2.length()){
            return false; 
@@ -125,15 +122,16 @@ public class EjerciciosNivel01 {
         else if(palabra1.length() == palabra2.length()){
             for(int i=0; i < palabra1.length(); i++){
                 for(int j=0; j < palabra2.length(); j++){
-                    if(palabra1.charAt(i) == palabra2.charAt(j)){
-                        palabra3 = palabra3 + palabra1.charAt(i);                     
+                    if(palabra1.charAt(i) == palabra2.charAt(j)){                     
+                        //borra la letra que coincide de la segunda palabra.
+                        palabra2 = palabra2.substring(0,j) + palabra2.substring(j+1, palabra2.length());
                     }          
                 }
             }
             //Si la primera palabra es igual a la tercera palabra que hemos ido
             //copiando cada vez que una letra era igual que otra de la otra
             //palabra, devuelve true ya que son iguales.
-            if(palabra1.equals(palabra3)){
+            if(palabra2.equals("")){
               return true;  
             } 
         }
