@@ -138,6 +138,34 @@ public class EjerciciosNivel01 {
         return false;
     }
     
+    public void imprimeMes(int numX){
+        int contador = 0; //para saber que dia de la semana estoy imprimiendo.
+        //primera fase: imprime las xx.
+        for(int i=0; i < numX; i++){
+            System.out.print("XX ");
+            contador++;
+            if(contador %7 == 0){
+                System.out.println("");
+            }
+        }
+        //segunda fase: imprime los números desde el 1 al 31.
+        for(int i=1; i <= 31; i++){
+            if(i < 10){
+                System.out.print("0" + i + " ");
+            }else{
+                System.out.print(i + " ");
+            }
+            contador++;
+            if(contador %7 == 0){
+                System.out.println("");
+            }
+        }
+        //tercera fase: imprime las xx del final.
+        while(contador %7 != 0){
+            System.out.print("XX ");
+            contador++;
+        }
+    }
     
     public static void main(String[] args) {
         //test primer ejercicio.
@@ -162,6 +190,9 @@ public class EjerciciosNivel01 {
         System.out.println(e.esAnagrama("Tajo", "José")); //false
         System.out.println(e.esAnagrama("Riesgo", "Sergio")); //true
         System.out.println(e.esAnagrama("Riesgo", "Ordena")); //false
+        //test sexto ejercicio.
+        e.imprimeMes(3);
+        e.imprimeMes(5);
     }
     
 }
